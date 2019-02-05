@@ -1,0 +1,81 @@
+#include<iostream>
+using namespace std;
+class user {
+	int l, w;
+public:
+	int getwidth(int w);
+	int getLength(int len);
+	int setLength(int lenght);
+	int  setWidth(int width);
+	int getArea(int len, int w, int a);
+	void drawrectangle(int& len, int& w);
+	int rotateRectangle(int len, int w);
+};
+	int main()
+	{
+		user obj;
+		int len = 0, w = 0, a = 0;
+		obj.setLength(len);
+		cout << "enter w";
+		obj.setWidth(w);
+		cout << "lenght of rectangle  is:" << endl;
+		obj.getLength(len);
+		cout << "Width of rectangle is :" << endl;
+		obj.getwidth(w);
+		cout << "This is area of rectangle :" << endl;
+		obj.getArea(len,w,a);
+		cout << "After rotating lenght and width  of rectangle is :" << endl;
+		obj.rotateRectangle(len, w);
+		cout << " Pattern of rectangle is : " << endl;
+		obj.drawrectangle(len,w);
+		system("pause");
+		return 0;
+	}
+	int user::setLength(int len)
+	{
+		cout << "enter length" << endl;
+		cin >> l;
+		return l;
+	}
+	int user::getLength(int len)
+	{
+		return l;
+	}
+
+	
+	int  user::setWidth(int w) {
+		cout << "enter width of rectangle :" << endl;
+		cin >> w;
+		return w;
+
+	}
+	int user:: getwidth(int w) {
+		return w;
+	}
+	int user::getArea(int len, int w, int a)
+	{
+		a = len * w;
+		return a;
+	}
+	int user ::rotateRectangle(int len, int w)
+	{
+		int temp = 0;
+		temp = len;
+		len = w;
+		w = temp;
+		return len;
+		return w;
+	}
+	void user ::drawrectangle(int& len, int& w)
+	{
+		for (int i = 0; i < len; i++)
+		{
+			for (int j = 0; j < w; j++)
+			{
+				cout << "*";
+			}
+			cout << endl;
+		}
+	}
+
+	
