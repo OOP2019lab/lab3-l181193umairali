@@ -1,0 +1,74 @@
+#include<iostream>
+#include<string>
+#include<fstream>
+using namespace std;
+int size1 = 0;
+struct githubuser {
+	string firstname, username, email, institute, qualification = "";
+	string* foldername;
+	int folderCount = 0,size=0;
+};
+void readDataFromFile(githubuser* users);
+void backgroundinformaytion(githubuser *users);
+void backup(githubuser* users, githubuser*& backupArry, int userCount);
+int main()
+{
+	int size = 0;
+	githubuser* users;
+	users = new githubuser[0];
+	readDataFromFile(users);
+	backgroundinformaytion(users);
+	system("pause");
+	return 0;
+}
+void readDataFromFile(githubuser* users)
+{
+	int size = 0;
+	int k = 0;
+	ifstream fin("C:\\Users\\Ahmad Ali\\Desktop\\umair.txt");
+	fin >> size;
+	string tesmp = "";
+	cout << "size" << size << endl;
+	users = new githubuser[size];
+	for (int q = 0; q < size; q++)
+	{
+		fin >> users[q].firstname;
+		fin >> users[q].username;
+		fin >> users[q].email;
+		fin >> users[q].folderCount;
+		users[q].foldername = new string[users[q].folderCount];
+		getline(fin, tesmp);
+		for (int i = 0; i < users[q].folderCount; i++)
+		{
+			getline(fin, users[q].foldername[i]);
+		}
+		cout << users[q].firstname << endl;
+		cout << users[q].username << endl;
+		cout << users[q].email << endl;
+		cout << users[q].folderCount << endl;
+		for (int b = 0; b < users[q].folderCount; b++)
+		{
+			cout << users[q].foldername[b];
+		}
+		cout << endl;
+	}
+
+}
+void backup(githubuser* users, githubuser*& backupArry, int userCount)
+{
+	backupArry = users;
+}
+void backgroundinformaytion(githubuser *users)
+{
+	for (int l = 0; l < size1; l++)
+	{
+		cout << users[l].firstname << "Enter name of institution :" << endl;
+		cin >> users[l].institute;
+		cout << users[l].firstname << "Enter your qualification :" << endl;
+		cin >> users[l].qualification;
+	}
+
+}
+
+
+
